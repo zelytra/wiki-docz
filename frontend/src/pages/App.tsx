@@ -3,6 +3,7 @@ import router from '@/libs/router'
 import React, { type ReactElement, useEffect } from 'react'
 import { useAuth } from 'react-oidc-context'
 import './assets/App.scss'
+import { HeaderBar } from '@/layouts/HeaderBar'
 
 export default function App (): ReactElement {
   const location = useLocation()
@@ -18,6 +19,7 @@ export default function App (): ReactElement {
 
   return (
         <div className="App">
+            <HeaderBar/>
             <Routes>
                 {router.map((value) => (
                     <Route path={value.path} Component={value.component} key={value.path}/>

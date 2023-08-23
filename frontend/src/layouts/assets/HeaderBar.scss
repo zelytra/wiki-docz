@@ -1,0 +1,33 @@
+header {
+  background: var(--secondary-background);
+  height: 35px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .side-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    h1 {
+      font-family: PlusJakartaSans, sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+
+  img.user-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: solid 2px var(--main);
+  }
+}

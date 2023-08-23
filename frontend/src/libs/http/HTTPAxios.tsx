@@ -48,43 +48,41 @@ export function useAxios (options: RequestOptions): AxiosState {
 
   })
   useEffect(() => {
-    if (auth.isAuthenticated) {
-      const fetchData = async () => {
-        setState(prevState => ({ ...prevState, loading: true })) // Start fetching
-        try {
-          const response: AxiosResponse = await axios({
-            url: backendURL.concat(options.url),
-            data: options.data,
-            headers: options.header,
-            method: options.method,
-            onDownloadProgress: ({ loaded, total }: AxiosProgressEvent) => {
-              if (total != null) {
-                setState(prevState => ({
-                  ...prevState,
-                  progress: Math.round((loaded * 100) / total)
-                }))
-              }
+    const fetchData = async () => {
+      setState(prevState => ({ ...prevState, loading: true })) // Start fetching
+      try {
+        const response: AxiosResponse = await axios({
+          url: backendURL.concat(options.url),
+          data: options.data,
+          headers: options.header,
+          method: options.method,
+          onDownloadProgress: ({ loaded, total }: AxiosProgressEvent) => {
+            if (total != null) {
+              setState(prevState => ({
+                ...prevState,
+                progress: Math.round((loaded * 100) / total)
+              }))
             }
-          })
-          console.debug('[' + options.method + '] ' + backendURL.concat(options.url))
-          setState({
-            data: response.data,
-            error: null,
-            loading: false,
-            progress: 100
-          })
-        } catch (error: any) {
-          setState({
-            loading: false,
-            progress: 0,
-            data: null,
-            error
+          }
+        })
+        console.debug('[' + options.method + '] ' + backendURL.concat(options.url))
+        setState({
+          data: response.data,
+          error: null,
+          loading: false,
+          progress: 100
+        })
+      } catch (error: any) {
+        setState({
+          loading: false,
+          progress: 0,
+          data: null,
+          error
 
-          })
-        }
+        })
       }
-      void fetchData()
     }
+    void fetchData()
   }, [auth.isAuthenticated])
 
   return state
