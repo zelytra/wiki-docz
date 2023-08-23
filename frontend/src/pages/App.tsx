@@ -11,7 +11,7 @@ export default function App (): ReactElement {
   useEffect(() => {
     const route = router.filter((x) => x.path === location.pathname)[0]
     if (route.isProtected && !auth.isAuthenticated && !auth.isLoading) {
-      auth.signinRedirect().then(r => { console.log(r) })
+      void auth.signinRedirect()
       auth.startSilentRenew()
     }
   }, [location])

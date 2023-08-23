@@ -13,11 +13,19 @@
       "./tsconfig.json"
     ]
   },
+  "ignorePatterns": [
+    "vite.config.ts"
+  ],
   "plugins": [
     "react"
   ],
   "rules": {
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-misused-promises": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

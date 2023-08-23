@@ -1,8 +1,9 @@
-export function PageNotFound() {
+import React, { type ReactElement } from 'react'
 
-    return (
+export function PageNotFound (): ReactElement {
+  return (
         <>
             <h1>Not found </h1>
         </>
-    );
+  )
 }

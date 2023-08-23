@@ -1,4 +1,4 @@
-import { useState, useEffect, type ReactNode, ReactElement } from 'react'
+import { useState, useEffect, type ReactNode } from 'react'
 import axios, { type AxiosResponse, type AxiosError, type Method, type AxiosProgressEvent } from 'axios'
 import { useAuth } from 'react-oidc-context'
 
@@ -57,11 +57,11 @@ export function useAxios (options: RequestOptions): AxiosState {
             data: options.data,
             headers: options.header,
             method: options.method,
-            onDownloadProgress: (progressEvent: AxiosProgressEvent) => {
-              if (progressEvent.total != null) {
+            onDownloadProgress: ({ loaded, total }: AxiosProgressEvent) => {
+              if (total != null) {
                 setState(prevState => ({
                   ...prevState,
-                  progress: Math.round((progressEvent.loaded * 100) / progressEvent.total!)
+                  progress: Math.round((loaded * 100) / total)
                 }))
               }
             }
@@ -83,7 +83,7 @@ export function useAxios (options: RequestOptions): AxiosState {
           })
         }
       }
-      fetchData()
+      void fetchData()
     }
   }, [auth.isAuthenticated])
 
