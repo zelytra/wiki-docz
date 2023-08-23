@@ -1,11 +1,10 @@
-import {HTTPRenderProps} from "@/libs/http/HTTPAxios";
+import { type HTTPRenderProps } from '@/libs/http/HTTPAxios'
+import React from 'react'
 
-export function HTTPRenderWrapper({state, children}: HTTPRenderProps) {
-    if (!state) return <div>State is undefined</div>
-    if (state.loading) return <div>Loading...</div>;
-    if (state.error) return <div>Error: {state.error.message}</div>;
-    if (state && state.data) return <div className={"axios-http-renderer"}>{children(state.data)}</div>;
+export function HTTPRenderWrapper ({ state, children }: HTTPRenderProps) {
+  if (state.loading) return <div>Loading...</div>
+  if (state.error != null) return <div>Error: {state.error.message}</div>
+  if (state.data != null) return <div className={'axios-http-renderer'}>{children(state.data)}</div>
 
-    // Optionally handle the case where no data is received and it's not loading or error.
-    return null;
+  return <div>State is undefined</div>
 }
