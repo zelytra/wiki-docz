@@ -17,7 +17,7 @@
       "responses": [
         {
           "uuid": "04fd8979-1dbe-4d2a-a381-b519f6b1c3ea",
-          "body": "{\n  \"id\": \"{{faker 'datatype.uuid'}}\",\n  \"avatar\": \"{{faker 'image.avatar'}}\",\n  \"name\" : \"{{faker 'name.firstName'}} {{faker 'name.firstName'}}\",\n  \"username\" : \"{{faker 'name.firstName'}}\",\n}",
+          "body": "{\n  \"id\": \"{{faker 'datatype.uuid'}}\",\n  \"avatar\": \"{{faker 'image.avatar'}}\",\n  \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\n  \"username\": \"{{faker 'name.firstName'}}\"\n}\n",
           "latency": 0,
           "statusCode": 200,
           "label": "",
