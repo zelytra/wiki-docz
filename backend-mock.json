@@ -1,0 +1,79 @@
+{
+  "uuid": "71bde877-14aa-4cd8-aada-49a3da02110d",
+  "lastMigration": 28,
+  "name": "Backend mock",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 7103,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "193f06d3-0826-41f4-9c19-7777434b865a",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "user/@me",
+      "responses": [
+        {
+          "uuid": "04fd8979-1dbe-4d2a-a381-b519f6b1c3ea",
+          "body": "{\n  \"id\": \"{{faker 'datatype.uuid'}}\",\n  \"avatar\": \"{{faker 'image.avatar'}}\",\n  \"name\" : \"{{faker 'name.firstName'}} {{faker 'name.firstName'}}\",\n  \"username\" : \"{{faker 'name.firstName'}}\",\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "193f06d3-0826-41f4-9c19-7777434b865a"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}
