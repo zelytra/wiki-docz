@@ -1,0 +1,13 @@
+.custom-button {
+  border: solid 2px var(--primary-text);
+  background: transparent;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 2px;
+
+  &:hover{
+    background: var(--primary-text);
+    color: var(--main);
+    border: solid 2px var(--primary-text);
+  }
+}

@@ -11,7 +11,7 @@ $responsive-break-point: 800px;
   font-family: Lexend, sans-serif;
   font-weight: 400;
   color: var(--primary-text);
-  scrollbar-color: var(--primary-text) var(--secondary-background);
+  scrollbar-color: var(--secondary-background) var(--primary-text);
   scrollbar-width: thin;
   //z-index: 1;
 }

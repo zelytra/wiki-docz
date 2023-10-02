@@ -1,7 +1,7 @@
 {
   "name": "wiki-docz",
   "private": true,
-  "version": "0.0.5",
+  "version": "0.0.11",
   "type": "module",
   "scripts": {
     "dev": "npm version patch && vite",
