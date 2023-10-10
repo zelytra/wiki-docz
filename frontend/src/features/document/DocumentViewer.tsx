@@ -15,9 +15,9 @@ export function DocumentViewer (): ReactElement {
                 <div className={'action-bar'}>
                     <h1>Document title</h1>
                     <div className={'action-buttons'}>
-                        <Button name={'Edite'}/>
-                        <Button name={'Submit'}/>
-                        <Button name={'Details'} onClick={() => {
+                        <Button revert={true} name={'Edite'}/>
+                        <Button revert={true} name={'Submit'}/>
+                        <Button revert={true} name={'Details'} onClick={() => {
                           setModalOpen(true)
                         }}/>
                     </div>
