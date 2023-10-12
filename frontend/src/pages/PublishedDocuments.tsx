@@ -11,7 +11,7 @@ import { Button } from '@/libs/forms/Button'
 export function PublishedDocuments (): ReactElement {
   const publishedDocument = useAxios({
     method: 'GET',
-    url: 'docs/published/0/15',
+    url: 'docs/published/0/50',
     isProtected: false
   })
   return (
