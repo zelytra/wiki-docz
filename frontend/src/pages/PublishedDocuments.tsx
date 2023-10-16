@@ -11,9 +11,11 @@ import list from '@/assets/icons/list.svg'
 import { Button } from '@/libs/forms/Button'
 import { ButtonGroup } from '@/libs/forms/ButtonGroup'
 import { DocumentCard } from '@/features/document/DocumentCard'
+import { useNavigate } from 'react-router-dom'
 
 export function PublishedDocuments (): ReactElement {
   const [isCardMod, setIsCardMod] = useState(true)
+  const navigate = useNavigate()
   const publishedDocument = useAxios({
     method: 'GET',
     url: 'docs/published/0/50',
@@ -52,11 +54,17 @@ export function PublishedDocuments (): ReactElement {
                     ? <Table
                                 columns={['Title', 'Author', 'Date', 'Sender', 'Mentions', 'Classifications', 'Themes']}>
                                 {docs.map((doc, index) => (
-                                    <tr className={'body-table'} key={index}>
+                                    <tr key={index} onClick={() => {
+                                      navigate(`/doc/${doc.uuid}`)
+                                    }}>
                                         <td>{doc.title}</td>
-                                        <td>{doc.authors.join(', ')}</td>
+                                        <td>{doc.authors.map(({ name }) => {
+                                          return name
+                                        }).join(', ')}</td>
                                         <td>{doc.date.toString()}</td>
-                                        <td>{doc.sender}</td>
+                                        <td>{doc.sender.map(({ name }) => {
+                                          return name
+                                        }).join(', ')}</td>
                                         <td>{doc.mentions.join(', ')}</td>
                                         <td>{doc.classifications.join(', ')}</td>
                                         <td>{doc.themes.join(', ')}</td>
@@ -65,7 +73,9 @@ export function PublishedDocuments (): ReactElement {
                             </Table>
                     : <div className={'documents-wrapper'}>
                                 {docs.map((doc, index) => (
-                                    <DocumentCard document={doc} key={index}/>
+                                    <DocumentCard document={doc} key={index} onClick={() => {
+                                      navigate(`/doc/${doc.uuid}`)
+                                    }}/>
                                 ))}
                             </div>
                   )

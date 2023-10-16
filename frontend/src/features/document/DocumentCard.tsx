@@ -5,11 +5,12 @@ import './assets/DocumentCard.scss'
 
 export interface DocumentCardProp {
   document: WikiDocument
+  onClick?: () => void
 }
 
 export function DocumentCard (props: DocumentCardProp): ReactElement {
   return (
-        <div className={'document-card'}>
+        <div className={'document-card'} onClick={props.onClick}>
             <div className={'preview-wrapper'} style={{ backgroundImage: 'url(' + document + ')' }}/>
             <div className={'details-wrapper'}>
                 <div className={'title'}>
