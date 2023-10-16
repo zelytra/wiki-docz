@@ -1,0 +1,26 @@
+button.custom-button {
+
+  cursor: pointer;
+  border-radius: 2px;
+  white-space: nowrap;
+  background: var(--main);
+  color: var(--primary-text);
+  border: none;
+  font-size: 14px;
+  padding: 6px;
+
+  &.revert {
+    border: solid 2px var(--primary-text);
+    background: transparent;
+  }
+
+  &:hover {
+    background: var(--background);
+
+    &.revert {
+      background: var(--primary-text);
+      color: var(--main);
+      border: solid 2px var(--primary-text);
+    }
+  }
+}

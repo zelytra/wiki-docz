@@ -1,0 +1,46 @@
+section.doc-publish-wrapper {
+  background: var(--primary-text);
+  margin: 22px;
+  border-radius: 3px;
+  height: 100%;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+
+  .research-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      border-bottom: solid 1px #03101a;
+      width: 100%;
+
+      input.research {
+        all: unset;
+        height: 26px;
+        padding: 2px;
+        width: 100%;
+        color: #03101a;
+
+      }
+    }
+  }
+
+  .documents-wrapper {
+    padding: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 4px;
+    height: 100%;
+    flex: 1 1 auto;
+    justify-content: space-around;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+}

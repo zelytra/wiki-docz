@@ -2,6 +2,8 @@
 import { Home } from '@/pages/Home'
 import { PageNotFound } from '@/pages/PageNotFound'
 import type React from 'react'
+import { PublishedDocuments } from '@/pages/PublishedDocuments'
+import { Test } from '@/pages/Test'
 
 export interface RouteDefinition {
   path: string
@@ -18,9 +20,14 @@ const routes: RouteDefinition[] = [
     name: 'Home'
   }, {
     path: '/publish',
-    component: Home,
+    component: PublishedDocuments,
     isProtected: false,
     name: 'Published'
+  }, {
+    path: '/test',
+    component: Test,
+    isProtected: false,
+    name: 'Test'
   }, {
     path: '/*',
     component: PageNotFound,

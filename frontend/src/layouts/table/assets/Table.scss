@@ -1,0 +1,96 @@
+table.custom-table {
+  border-collapse: collapse;
+  //table-layout: fixed;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  tr{
+    display: table; /* Allows rows to look like typical table rows */
+    width: 100%;
+    table-layout: fixed; /* Ensures all cells have equal width */
+  }
+
+  thead {
+    display: block;
+    tr {
+
+      height: 50px;
+    }
+
+    th {
+      background: var(--main-light);
+      font-size: 13px;
+      font-weight: 500;
+      text-align: start;
+      color: var(--lightless-text);
+
+      .header-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 10px;
+        margin-left: 5px;
+
+        .side-wrapper {
+          display: flex;
+          gap: 6px;
+        }
+      }
+
+      svg path {
+        fill: var(--heavy-icon);
+      }
+    }
+  }
+
+  tbody {
+    display: block;
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-right: 6px;
+
+    tr {
+      border-bottom: solid 1px var(--secondary-text);
+      cursor: pointer;
+
+      td {
+        color: var(--tier-text);
+        height: 30px;
+        padding: 2px 0;
+
+        text-align: start;
+        font-size: 14px;
+        word-wrap: break-word;
+      }
+
+      &:hover {
+        background-color: var(--main);
+
+        td {
+          color: var(--primary-text);
+        }
+
+        border: none;
+      }
+    }
+  }
+
+  tr:last-child td:first-child {
+    border-bottom-left-radius: 4px;
+  }
+
+  tr:last-child td:last-child {
+    border-bottom-right-radius: 4px;
+  }
+
+  tr:first-child th:first-child {
+    border-top-left-radius: 4px;
+  }
+
+  tr:first-child th:last-child {
+    border-top-right-radius: 4px;
+  }
+}

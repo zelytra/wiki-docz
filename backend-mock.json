@@ -36,12 +36,45 @@
       ],
       "enabled": true,
       "responseMode": null
+    },
+    {
+      "uuid": "84fdac45-d651-4bc4-ae55-30336dd7bc88",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "docs/published/:page/:pageSize",
+      "responses": [
+        {
+          "uuid": "6bb56c49-8bbb-4e9a-ab19-9d0cffa1d48d",
+          "body": "[ \r\n  {{#repeat (urlParam 'pageSize' '1')}}\r\n  {\r\n    \"title\": \"{{faker 'address.city'}}\",\r\n    \"date\": \"{{date '2020-11-20' '2020-11-25' 'dd-MM-yyyy'}}\",\r\n    \"authors\":[\r\n      {{#repeat 1 1}}\r\n      \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\"\r\n      {{/repeat}}],\r\n    \"classifications\":[\r\n      {{#repeat 1 4}}\r\n      \"{{faker 'address.city'}}\"\r\n      {{/repeat}}],\r\n    \"mentions\":[\r\n      {{#repeat 1 2}}\r\n      \"{{faker 'address.city'}}\"\r\n      {{/repeat}}],\r\n    \"themes\":[\r\n      {{#repeat 1 3}}\r\n      \"{{faker 'address.city'}}\"\r\n      {{/repeat}}],\r\n    \"coAuthors\":[\r\n      {{#repeat 1 4}}\r\n      \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\"\r\n      {{/repeat}}],\r\n    \"sender\":[\r\n      {{#repeat 1 2}}\r\n      \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\"\r\n      {{/repeat}}]\r\n  }\r\n  {{/repeat}}\r\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
     }
   ],
   "rootChildren": [
     {
       "type": "route",
       "uuid": "193f06d3-0826-41f4-9c19-7777434b865a"
+    },
+    {
+      "type": "route",
+      "uuid": "84fdac45-d651-4bc4-ae55-30336dd7bc88"
     }
   ],
   "proxyMode": false,

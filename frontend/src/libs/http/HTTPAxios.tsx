@@ -65,7 +65,7 @@ export function useAxios (options: RequestOptions): AxiosState {
             }
           }
         })
-        console.debug('[' + options.method + '] ' + backendURL.concat(options.url))
+        console.debug('[' + options.method + '] ' + backendURL.concat(options.url) + ' ' + JSON.stringify(options.data))
         setState({
           data: response.data,
           error: null,
