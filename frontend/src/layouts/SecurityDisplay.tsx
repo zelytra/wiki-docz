@@ -2,8 +2,8 @@ import React, { type ReactElement } from 'react'
 import './assets/SecurityDisplayer.scss'
 
 export enum SecurityType {
-  'SECRET' = '#e54545',
-  'TOP_SECRET' = '#0b63e5'
+  'AVOGADRO' = '#e54545',
+  'HIGGS' = '#0b63e5'
 }
 
 export interface SecurityProps {

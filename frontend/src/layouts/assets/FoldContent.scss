@@ -1,0 +1,26 @@
+.fold-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  overflow: hidden;
+
+  .fold-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: solid 1px var(--heavy-background);
+    cursor: pointer;
+    user-select: none;
+    height: 24px;
+
+    svg path {
+      fill: var(--main);
+    }
+
+    .fold-content{
+      height: auto;
+      overflow: hidden;
+      padding: 12px;
+    }
+  }
+}

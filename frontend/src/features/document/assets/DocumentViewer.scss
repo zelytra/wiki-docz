@@ -12,6 +12,7 @@ section.document {
     padding: 6px;
     width: 100%;
     flex-direction: column;
+    gap: 6px;
 
     .document-header {
       display: flex;
@@ -41,7 +42,28 @@ section.document {
         }
       }
     }
+
+    .ck-editor__main {
+      height: 100%;
+    }
+
+    .ck-editor {
+      height: 100%;
+    }
   }
 
+  h3 {
+    color: var(--main);
+  }
+
+  .metadata-value {
+    label {
+      color: var(--secondary-text);
+    }
+
+    p {
+      color: var(--background);
+    }
+  }
 
 }
