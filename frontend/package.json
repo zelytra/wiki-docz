@@ -1,7 +1,7 @@
 {
   "name": "wiki-docz",
   "private": true,
-  "version": "0.1.4",
+  "version": "0.4.0",
   "type": "module",
   "scripts": {
     "dev": "npm version patch && vite",
@@ -12,8 +12,10 @@
     "lint-fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^40.0.0",
-    "@ckeditor/ckeditor5-react": "^6.1.0",
+    "@tiptap/extension-image": "^2.1.12",
+    "@tiptap/pm": "^2.1.12",
+    "@tiptap/react": "^2.1.12",
+    "@tiptap/starter-kit": "^2.1.12",
     "axios": "^1.4.0",
     "oidc-client-ts": "^2.2.4",
     "react": "^18.2.0",

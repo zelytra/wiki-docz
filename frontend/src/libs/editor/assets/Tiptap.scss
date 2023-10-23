@@ -1,0 +1,14 @@
+.editor-wrapper {
+  border: 1px solid #d1d1d1;
+  width: auto;
+  height: 100%;
+  //background: red;
+
+  .tiptap {
+    height: 100%;
+
+    .focused {
+     border: none !important;
+    }
+  }
+}

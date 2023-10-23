@@ -57,17 +57,17 @@ export function PublishedDocuments (): ReactElement {
                                     <tr key={index} onClick={() => {
                                       navigate(`/doc/${doc.uuid}`)
                                     }}>
-                                        <td>{doc.title}</td>
-                                        <td>{doc.authors.map(({ name }) => {
+                                        <td>{doc.metadata.title}</td>
+                                        <td>{doc.metadata.authors.map(({ name }) => {
                                           return name
                                         }).join(', ')}</td>
-                                        <td>{doc.date.toString()}</td>
-                                        <td>{doc.sender.map(({ name }) => {
+                                        <td>{doc.metadata.date.toString()}</td>
+                                        <td>{doc.metadata.sender.map(({ name }) => {
                                           return name
                                         }).join(', ')}</td>
-                                        <td>{doc.mentions.join(', ')}</td>
-                                        <td>{doc.classifications.join(', ')}</td>
-                                        <td>{doc.themes.join(', ')}</td>
+                                        <td>{doc.metadata.mentions.join(', ')}</td>
+                                        <td>{doc.metadata.classifications.join(', ')}</td>
+                                        <td>{doc.metadata.themes.join(', ')}</td>
                                     </tr>
                                 ))}
                             </Table>

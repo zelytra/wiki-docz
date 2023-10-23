@@ -46,7 +46,7 @@
       "responses": [
         {
           "uuid": "6bb56c49-8bbb-4e9a-ab19-9d0cffa1d48d",
-          "body": "[ \r\n  {{#repeat (urlParam 'pageSize' '1')}}\r\n  {\r\n    \"uuid\": \"{{faker 'datatype.uuid'}}\",\r\n    \"title\": \"{{faker 'address.city'}}\",\r\n    \"date\": \"{{date '2020-11-20' '2020-11-25' 'dd-MM-yyyy'}}\",\r\n    \"authors\":[\r\n      {{#repeat 1 1}}\r\n      {\r\n       \"id\": \"{{faker 'datatype.uuid'}}\",\r\n       \"avatar\": \"{{faker 'image.avatar'}}\",\r\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\r\n        \"username\": \"{{faker 'name.firstName'}}\"\r\n      }\r\n      {{/repeat}}],\r\n    \"classifications\":[\r\n      {{#repeat 1 4}}\r\n      \"{{faker 'address.city'}}\"\r\n      {{/repeat}}],\r\n    \"mentions\":[\r\n      {{#repeat 1 2}}\r\n      \"{{faker 'address.city'}}\"\r\n      {{/repeat}}],\r\n    \"themes\":[\r\n      {{#repeat 1 3}}\r\n      \"{{faker 'address.city'}}\"\r\n      {{/repeat}}],\r\n    \"coAuthors\":[\r\n      {{#repeat 1 4}}\r\n      {\r\n       \"id\": \"{{faker 'datatype.uuid'}}\",\r\n       \"avatar\": \"{{faker 'image.avatar'}}\",\r\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\r\n        \"username\": \"{{faker 'name.firstName'}}\"\r\n      }\r\n      {{/repeat}}],\r\n    \"sender\":[\r\n      {{#repeat 1 2}}\r\n      {\r\n       \"id\": \"{{faker 'datatype.uuid'}}\",\r\n       \"avatar\": \"{{faker 'image.avatar'}}\",\r\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\r\n        \"username\": \"{{faker 'name.firstName'}}\"\r\n      }\r\n      {{/repeat}}]\r\n  }\r\n  {{/repeat}}\r\n]",
+          "body": "[ \r\n  {{#repeat (urlParam 'pageSize' '1')}}\r\n  {\r\n    \"uuid\": \"{{faker 'datatype.uuid'}}\",\r\n    \"metadata\":{\r\n      \"title\": \"{{faker 'address.city'}}\",\r\n    \"date\": \"{{date '2020-11-20' '2020-11-25' 'dd-MM-yyyy'}}\",\r\n    \"authors\":[\r\n      {{#repeat 1 1}}\r\n      {\r\n       \"id\": \"{{faker 'datatype.uuid'}}\",\r\n       \"avatar\": \"{{faker 'image.avatar'}}\",\r\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\r\n        \"username\": \"{{faker 'name.firstName'}}\"\r\n      }\r\n      {{/repeat}}],\r\n    \"classifications\":[\r\n      {{#repeat 1 4}}\r\n      \"{{faker 'address.city'}}\"\r\n      {{/repeat}}],\r\n    \"mentions\":[\r\n      {{#repeat 1 2}}\r\n      \"{{faker 'address.city'}}\"\r\n      {{/repeat}}],\r\n    \"themes\":[\r\n      {{#repeat 1 3}}\r\n      \"{{faker 'address.city'}}\"\r\n      {{/repeat}}],\r\n    \"coAuthors\":[\r\n      {{#repeat 1 4}}\r\n      {\r\n       \"id\": \"{{faker 'datatype.uuid'}}\",\r\n       \"avatar\": \"{{faker 'image.avatar'}}\",\r\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\r\n        \"username\": \"{{faker 'name.firstName'}}\"\r\n      }\r\n      {{/repeat}}],\r\n    \"sender\":[\r\n      {{#repeat 1 2}}\r\n      {\r\n       \"id\": \"{{faker 'datatype.uuid'}}\",\r\n       \"avatar\": \"{{faker 'image.avatar'}}\",\r\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\r\n        \"username\": \"{{faker 'name.firstName'}}\"\r\n      }\r\n      {{/repeat}}]\r\n    }\r\n  }\r\n  {{/repeat}}\r\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -75,7 +75,36 @@
       "responses": [
         {
           "uuid": "e19ae738-74f2-4c9a-8f21-1132fe600024",
-          "body": "{\n  \"title\": \"{{urlParam 'docName'}}\",\n    \"date\": \"{{date '2020-11-20' '2020-11-25' 'dd-MM-yyyy'}}\",\n    \"authors\":[\n      {{#repeat 1 3}}\n      {\n       \"id\": \"{{faker 'datatype.uuid'}}\",\n       \"avatar\": \"{{faker 'image.avatar'}}\",\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\n        \"username\": \"{{faker 'name.firstName'}}\"\n      }\n      {{/repeat}}\n      ],\n    \"classifications\":[\n      {{#repeat 1 4}}\n      \"{{faker 'address.city'}}\"\n      {{/repeat}}],\n    \"mentions\":[\n      {{#repeat 1 2}}\n      \"{{faker 'address.city'}}\"\n      {{/repeat}}],\n    \"themes\":[\n      {{#repeat 1 3}}\n      \"{{faker 'address.city'}}\"\n      {{/repeat}}],\n    \"coAuthors\":[\n      {{#repeat 1 4}}\n      {\n       \"id\": \"{{faker 'datatype.uuid'}}\",\n       \"avatar\": \"{{faker 'image.avatar'}}\",\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\n        \"username\": \"{{faker 'name.firstName'}}\"\n      }\n      {{/repeat}}],\n    \"sender\":[\n      {{#repeat 1 2}}\n      {\n       \"id\": \"{{faker 'datatype.uuid'}}\",\n       \"avatar\": \"{{faker 'image.avatar'}}\",\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\n        \"username\": \"{{faker 'name.firstName'}}\"\n      }\n      {{/repeat}}]\n}",
+          "body": "{\n  \"uuid\": \"{{faker 'datatype.uuid'}}\",\n  \"metdata\":{\n    \"title\": \"{{urlParam 'docName'}}\",\n    \"date\": \"{{date '2020-11-20' '2020-11-25' 'dd-MM-yyyy'}}\",\n    \"authors\":[\n      {{#repeat 1 3}}\n      {\n       \"id\": \"{{faker 'datatype.uuid'}}\",\n       \"avatar\": \"{{faker 'image.avatar'}}\",\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\n        \"username\": \"{{faker 'name.firstName'}}\"\n      }\n      {{/repeat}}\n      ],\n    \"classifications\":[\n      {{#repeat 1 4}}\n      \"{{faker 'address.city'}}\"\n      {{/repeat}}],\n    \"mentions\":[\n      {{#repeat 1 2}}\n      \"{{faker 'address.city'}}\"\n      {{/repeat}}],\n    \"themes\":[\n      {{#repeat 1 3}}\n      \"{{faker 'address.city'}}\"\n      {{/repeat}}],\n    \"coAuthors\":[\n      {{#repeat 1 4}}\n      {\n       \"id\": \"{{faker 'datatype.uuid'}}\",\n       \"avatar\": \"{{faker 'image.avatar'}}\",\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\n        \"username\": \"{{faker 'name.firstName'}}\"\n      }\n      {{/repeat}}],\n    \"sender\":[\n      {{#repeat 1 2}}\n      {\n       \"id\": \"{{faker 'datatype.uuid'}}\",\n       \"avatar\": \"{{faker 'image.avatar'}}\",\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\n        \"username\": \"{{faker 'name.firstName'}}\"\n      }\n      {{/repeat}}]\n  },\n\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "005757ee-7bf4-4111-a35a-8b886403244a",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "stats",
+      "responses": [
+        {
+          "uuid": "4c55f60e-91b9-4eeb-a491-5e5f8282af41",
+          "body": "{\n  \"totalPublishedDocument\": {{faker 'random.numeric' 4}},\n  \"totalTodoDocument\": {{faker 'random.numeric' 2}},\n  \"userCount\": {{faker 'random.numeric' 3}}\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -108,6 +137,10 @@
     {
       "type": "route",
       "uuid": "f3846321-6dae-4763-b45c-ff6ac8ecb350"
+    },
+    {
+      "type": "route",
+      "uuid": "005757ee-7bf4-4111-a35a-8b886403244a"
     }
   ],
   "proxyMode": false,
