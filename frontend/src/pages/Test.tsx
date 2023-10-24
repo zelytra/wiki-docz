@@ -5,7 +5,7 @@ import { DocumentViewer } from '@/features/document/DocumentViewer'
 export function Test (): ReactElement {
   return (
       <section className={'test'}>
-        <DocumentViewer uuid={'xxx'}/>
+        <DocumentViewer/>
       </section>
   )
 }
