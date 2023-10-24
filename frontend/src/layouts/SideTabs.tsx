@@ -8,7 +8,7 @@ export interface SideTabsProps {
 
 export function SideTabs (props: SideTabsProps): ReactElement {
   return (
-        <div className={'side-tabs'} style={{ maxWidth: props.isDeploy ? '20%' : '0' }}>
+        <div className={'side-tabs ' + (props.isDeploy ? '' : 'deployed')}>
             {props.children}
         </div>
   )
