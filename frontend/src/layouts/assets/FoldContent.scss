@@ -3,24 +3,61 @@
   flex-direction: column;
   padding: 2px;
   overflow: hidden;
+  pointer-events: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  &.folded {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    .fold-title {
+      .fold-animation {
+        height: 5px;
+        border-radius: 100px;
+      }
+    }
+  }
+
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
 
   .fold-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: solid 1px var(--heavy-background);
+    //border-bottom: solid 1px var(--heavy-background);
     cursor: pointer;
     user-select: none;
-    height: 24px;
+    height: auto;
+    pointer-events: auto;
 
-    svg path {
-      fill: var(--main);
+    .fold-animation {
+      background: var(--main);
+      width: 5px;
+      height: 20px;
+      border-radius: 3px;
+      margin-right: 6px;
     }
+  }
 
-    .fold-content{
-      height: auto;
-      overflow: hidden;
-      padding: 12px;
+  .fold-content {
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 50vh;
+
+    &.folded {
+      max-height: 0;
+      padding: 0;
     }
   }
 }

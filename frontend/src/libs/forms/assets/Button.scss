@@ -7,7 +7,8 @@ button.custom-button {
   color: var(--primary-text);
   border: none;
   font-size: 14px;
-  padding: 6px;
+  padding: 4px;
+  height: 100%;
 
   &.revert {
     border: solid 2px var(--primary-text);

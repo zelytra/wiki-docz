@@ -30,9 +30,7 @@ export function HeaderBar (): ReactElement {
             </div>
             <HTTPRenderWrapper state={userInfo}>
                 {(data: User) => (
-                    <>
-                        <img className={'user-icon'} src={data.avatar}/>
-                    </>
+                    <img className={'user-icon'} src={data.avatar} alt={'user-icon'}/>
                 )}
             </HTTPRenderWrapper>
         </header>

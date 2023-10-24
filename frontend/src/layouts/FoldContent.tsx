@@ -1,6 +1,4 @@
 import React, { type ReactElement, useState } from 'react'
-import { ReactSVG } from 'react-svg'
-import arrow from '@/assets/icons/list.svg'
 import './assets/FoldContent.scss'
 
 export interface FoldContentProps {
@@ -11,14 +9,14 @@ export interface FoldContentProps {
 export function FoldContent (props: FoldContentProps): ReactElement {
   const [isFold, setFold] = useState(false)
   return (
-        <div className={'fold-content-wrapper'}>
+        <div className={'fold-content-wrapper ' + (isFold ? 'folded' : '')}>
             <div className={'fold-title'} onClick={() => {
               setFold(!isFold)
             }}>
                 {props.title}
-                <ReactSVG src={arrow}/>
+                <div className={'fold-animation'}/>
             </div>
-            <div className={'fold-content'} style={{ maxHeight: isFold ? '0' : '50vh' }}>
+            <div className={'fold-content ' + (isFold ? 'folded' : '')}>
                 {props.children}
             </div>
         </div>)

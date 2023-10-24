@@ -9,10 +9,10 @@ export interface WikiDocument {
 export interface DocumentMetadata {
   title: string
   date: Date
-  authors: User[]
+  author: User
   classifications: string[]
   mentions: string[]
   themes: string[]
   coAuthors: User[]
-  sender: User[]
+  sender: User
 }

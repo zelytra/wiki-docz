@@ -7,17 +7,16 @@ export enum SecurityType {
 }
 
 export interface SecurityProps {
-  type: SecurityType[]
+  type: SecurityType
+  content: string
 }
 
 export function SecurityDisplay (props: SecurityProps): ReactElement {
   return (
         <div className={'security-wrapper'}>
-            {props.type.map((value, index) => (
-                <span key={index} className={'security'} style={{ color: value, border: 'solid 2px ' + value }}>
-                    {value}
+                <span className={'security'} style={{ color: props.type, border: 'solid 2px ' + props.type }}>
+                    {props.content}
                 </span>
-            ))}
         </div>
   )
 }

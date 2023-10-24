@@ -12,17 +12,13 @@ import useAxios from '@/libs/http/HTTPAxios'
 import { HTTPRenderWrapper } from '@/libs/http/HTTPRenderWrapper'
 import { type WikiDocument } from '@/objects/Document'
 
-export interface DocumentViewerProps {
-  uuid?: string
-}
-
-export function DocumentViewer (props: DocumentViewerProps): ReactElement {
+export function DocumentViewer (): ReactElement {
   const [isModalOpen, setModalOpen] = useState(false)
   const { docId } = useParams()
   const [isMetadataTabOpen, setMetadataTabOpen] = useState(true)
   const wikiDocument = useAxios({
     method: 'GET',
-    url: 'doc/' + props.uuid,
+    url: 'doc/' + docId,
     isProtected: false
   })
 
@@ -32,9 +28,19 @@ export function DocumentViewer (props: DocumentViewerProps): ReactElement {
                 <section className={'document'} id={docId}>
                     <div className={'doc-content'}>
                         <div className={'document-header'}>
-                            <SecurityDisplay type={[SecurityType.AVOGADRO, SecurityType.HIGGS]}/>
+                            <div className={'security-container'}>
+                                {doc.metadata.classifications.map((content) => (
+                                    <SecurityDisplay key={content} type={SecurityType.AVOGADRO} content={content}/>
+                                ))}
+                                {doc.metadata.mentions.map((content) => (
+                                    <SecurityDisplay key={content} type={SecurityType.HIGGS} content={content}/>
+                                ))}
+                                {doc.metadata.themes.map((content) => (
+                                    <SecurityDisplay key={content} type={SecurityType.HIGGS} content={content}/>
+                                ))}
+                            </div>
                             <div className={'action-bar'}>
-                                <h1>Document title</h1>
+                                <h1>{doc.metadata.title}</h1>
                                 <div className={'action-buttons'}>
                                     <Button revert={true} name={'Edite'}/>
                                     <Button revert={true} name={'Submit'}/>
@@ -50,10 +56,47 @@ export function DocumentViewer (props: DocumentViewerProps): ReactElement {
                         <Tiptap/>
                     </div>
                     <SideTabs isDeploy={isMetadataTabOpen}>
+                        <FoldContent title={<h3>Editors</h3>}>
+                            <div className={'metadata-value'}>
+                                <label>Author</label>
+                                <div className={'user-wrapper'}>
+                                    <img className={'user-icon'} src={doc.metadata.author.avatar}/>
+                                    <p>{doc.metadata.author.name}</p>
+                                </div>
+                            </div>
+                            <div className={'metadata-value'}>
+                                <label>Co-Editor</label>
+                                {doc.metadata.coAuthors.map((author) => (
+                                    <div key={author.name} className={'user-wrapper'}>
+                                        <img className={'user-icon'} src={author.avatar}/>
+                                        <p>{author.name}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </FoldContent>
                         <FoldContent title={<h3>Metadata</h3>}>
                             <div className={'metadata-value'}>
-                                <label>Date</label>
-                                <p>xxx</p>
+                                <label>Avogadro</label>
+                                <p>{doc.metadata.classifications.join(',')}</p>
+                            </div>
+                            <div className={'metadata-value'}>
+                                <label>Higgs</label>
+                                <p>{doc.metadata.mentions.join(', ')}</p>
+                            </div>
+                            <div className={'metadata-value'}>
+                                <label>Theme</label>
+                                <p>{doc.metadata.themes.join(', ')}</p>
+                            </div>
+                            <div className={'metadata-value'}>
+                                <label>Requester</label>
+                                <div key={doc.metadata.sender.name} className={'user-wrapper'}>
+                                    <img className={'user-icon'} src={doc.metadata.sender.avatar}/>
+                                    <p>{doc.metadata.sender.name}</p>
+                                </div>
+                            </div>
+                            <div className={'metadata-value'}>
+                                <label>Last modification</label>
+                                <p>{doc.metadata.date.toString()}</p>
                             </div>
                         </FoldContent>
                     </SideTabs>
