@@ -53,7 +53,7 @@ export function DocumentViewer (): ReactElement {
                                 </div>
                             </div>
                         </div>
-                        <Tiptap/>
+                        <Tiptap data={doc.data}/>
                     </div>
                     <SideTabs isDeploy={isMetadataTabOpen}>
                         <FoldContent title={<h3>Editors</h3>}>

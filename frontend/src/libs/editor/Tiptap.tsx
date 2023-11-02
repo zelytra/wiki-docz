@@ -1,20 +1,21 @@
 import React, { type ReactElement } from 'react'
-import { EditorProvider } from '@tiptap/react'
+import { EditorProvider, type Extensions } from '@tiptap/react'
 import { StarterKit } from '@tiptap/starter-kit'
 import { OptionMenu } from '@/libs/editor/OptionMenu'
 import './assets/Tiptap.scss'
 
-export function Tiptap (): ReactElement {
+export interface TiptapProps {
+  data: string
+}
+
+export function Tiptap (props: TiptapProps): ReactElement {
   // define your extension array
-  const extensions = [
+  const extensions: Extensions | undefined = [
     StarterKit
   ]
-
-  const content = '<p>Hello World!</p>'
-
   return (
         <div className={'editor-wrapper'}>
-            <EditorProvider slotBefore={<OptionMenu/>} extensions={extensions} content={content}><></>
+            <EditorProvider slotBefore={<OptionMenu/>} extensions={extensions} content={props.data}><></>
             </EditorProvider>
         </div>
   )
