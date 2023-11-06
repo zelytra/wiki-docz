@@ -10,7 +10,7 @@ $responsive-break-point: 800px;
   transition-timing-function: cubic-bezier(0.390, 0.575, 0.000, 1.005); /* custom */
   font-family: Lexend, sans-serif;
   font-weight: 400;
-  color: var(--primary-text);
+  //color: var(--primary-text);
   scrollbar-color: var(--secondary-background) var(--primary-text);
   scrollbar-width: thin;
   //z-index: 1;
@@ -41,4 +41,8 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--primary-text);
+}
+
+.ck-powered-by {
+  display: none;
 }

@@ -46,7 +46,65 @@
       "responses": [
         {
           "uuid": "6bb56c49-8bbb-4e9a-ab19-9d0cffa1d48d",
-          "body": "[ \r\n  {{#repeat (urlParam 'pageSize' '1')}}\r\n  {\r\n    \"title\": \"{{faker 'address.city'}}\",\r\n    \"date\": \"{{date '2020-11-20' '2020-11-25' 'dd-MM-yyyy'}}\",\r\n    \"authors\":[\r\n      {{#repeat 1 1}}\r\n      \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\"\r\n      {{/repeat}}],\r\n    \"classifications\":[\r\n      {{#repeat 1 4}}\r\n      \"{{faker 'address.city'}}\"\r\n      {{/repeat}}],\r\n    \"mentions\":[\r\n      {{#repeat 1 2}}\r\n      \"{{faker 'address.city'}}\"\r\n      {{/repeat}}],\r\n    \"themes\":[\r\n      {{#repeat 1 3}}\r\n      \"{{faker 'address.city'}}\"\r\n      {{/repeat}}],\r\n    \"coAuthors\":[\r\n      {{#repeat 1 4}}\r\n      \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\"\r\n      {{/repeat}}],\r\n    \"sender\":[\r\n      {{#repeat 1 2}}\r\n      \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\"\r\n      {{/repeat}}]\r\n  }\r\n  {{/repeat}}\r\n]",
+          "body": "[ \r\n  {{#repeat (urlParam 'pageSize' '1')}}\r\n  {\r\n    \"uuid\": \"{{faker 'datatype.uuid'}}\",\r\n    \"metadata\":{\r\n      \"title\": \"{{faker 'address.city'}}\",\r\n    \"date\": \"{{date '2020-11-20' '2020-11-25' 'dd-MM-yyyy'}}\",\r\n    \"author\":\r\n      {\r\n       \"id\": \"{{faker 'datatype.uuid'}}\",\r\n       \"avatar\": \"{{faker 'image.avatar'}}\",\r\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\r\n        \"username\": \"{{faker 'name.firstName'}}\"\r\n      }\r\n      ,\r\n    \"classifications\":[\r\n      {{#repeat 1 4}}\r\n      \"{{faker 'address.city'}}\"\r\n      {{/repeat}}],\r\n    \"mentions\":[\r\n      {{#repeat 1 2}}\r\n      \"{{faker 'address.city'}}\"\r\n      {{/repeat}}],\r\n    \"themes\":[\r\n      {{#repeat 1 3}}\r\n      \"{{faker 'address.city'}}\"\r\n      {{/repeat}}],\r\n    \"coAuthors\":[\r\n      {{#repeat 2 6}}\r\n      {\r\n       \"id\": \"{{faker 'datatype.uuid'}}\",\r\n       \"avatar\": \"{{faker 'image.avatar'}}\",\r\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\r\n        \"username\": \"{{faker 'name.firstName'}}\"\r\n      }\r\n      {{/repeat}}],\r\n    \"sender\":\r\n      \r\n      {\r\n       \"id\": \"{{faker 'datatype.uuid'}}\",\r\n       \"avatar\": \"{{faker 'image.avatar'}}\",\r\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\r\n        \"username\": \"{{faker 'name.firstName'}}\"\r\n      }\r\n      \r\n    }\r\n  }\r\n  {{/repeat}}\r\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f3846321-6dae-4763-b45c-ff6ac8ecb350",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "doc/:docUUID/",
+      "responses": [
+        {
+          "uuid": "e19ae738-74f2-4c9a-8f21-1132fe600024",
+          "body": "{\n  \"uuid\": \"{{urlParam 'docUUID'}}\",\n  \"metadata\":{\n    \"title\": \"{{faker 'address.city'}}\",\n    \"date\": \"{{date '2020-11-20' '2020-11-25' 'dd-MM-yyyy'}}\",\n    \"author\":\n      {\n       \"id\": \"{{faker 'datatype.uuid'}}\",\n       \"avatar\": \"{{faker 'image.avatar'}}\",\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\n        \"username\": \"{{faker 'name.firstName'}}\"\n      }\n      ,\n    \"classifications\":[\n      {{#repeat 1 4}}\n      \"{{faker 'address.city'}}\"\n      {{/repeat}}],\n    \"mentions\":[\n      {{#repeat 1 2}}\n      \"{{faker 'address.city'}}\"\n      {{/repeat}}],\n    \"themes\":[\n      {{#repeat 1 3}}\n      \"{{faker 'address.city'}}\"\n      {{/repeat}}],\n    \"coAuthors\":[\n      {{#repeat 1 4}}\n      {\n       \"id\": \"{{faker 'datatype.uuid'}}\",\n       \"avatar\": \"{{faker 'image.avatar'}}\",\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\n        \"username\": \"{{faker 'name.firstName'}}\"\n      }\n      {{/repeat}}],\n    \"sender\":\n      {\n       \"id\": \"{{faker 'datatype.uuid'}}\",\n       \"avatar\": \"{{faker 'image.avatar'}}\",\n       \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\n        \"username\": \"{{faker 'name.firstName'}}\"\n      }\n      \n  },\n  \"data\":\"<h1>Lorem Ipsum</h1><p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis suscipit lacus, quis interdum mauris iaculis at. Praesent elit magna, pulvinar eu vulputate vel, aliquam vel diam. Sed ullamcorper rhoncus urna at mattis. Vivamus ac pretium magna. Vestibulum rhoncus pretium nisi, ornare molestie leo tempus a. Nullam in ante ex. In auctor odio eu ipsum scelerisque mollis. In maximus ullamcorper tortor non hendrerit. Quisque bibendum enim sed imperdiet luctus. Curabitur convallis arcu ligula. Proin at libero turpis. Quisque gravida est a justo accumsan pulvinar. Donec a dolor eu lorem dapibus vestibulum. Donec nulla nunc, pulvinar sed laoreet sed, ultrices eu nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus feugiat vulputate pellentesque. Ut fringilla nec mi nec dictum. Morbi et convallis ante. Sed laoreet sagittis ultricies. Ut tempor molestie commodo. Sed maximus egestas erat, nec egestas dui finibus non. Suspendisse porta viverra purus sed suscipit. Aliquam vitae justo at erat mollis ornare. Aliquam egestas mattis tellus et interdum. Suspendisse mollis dolor vitae molestie lobortis.- Duis tortor ex, suscipit luctus massa eget, ultrices vestibulum dolor. Morbi vitae consectetur lorem. Sed consequat at eros in gravida. Nunc ullamcorper nibh at diam sollicitudin varius et a neque. Donec molestie ligula massa, eu tincidunt justo pulvinar id. Pellentesque a aliquam augue, eu egestas nisl. Donec ac tortor ornare, venenatis ex non, mollis leo. Proin vitae eros sem. Nam interdum feugiat felis quis semper. Mauris ullamcorper augue ut enim finibus pharetra et sed massa. Praesent venenatis nunc quis mattis hendrerit. Vestibulum nibh augue, dapibus ut pretium non, venenatis sed felis. Nam vel velit vitae quam ultrices maximus ac ut eros. Nulla congue posuere lectus, et malesuada eros pharetra id. Nam sit amet arcu dolor. Phasellus sollicitudin urna turpis, sed venenatis lorem imperdiet vel. Aliquam ullamcorper erat sit amet iaculis ultrices. Pellentesque eu mi mollis, finibus felis sed, bibendum risus. Nullam blandit lorem eu fringilla tempus. Pellentesque vulputate quis lacus sed varius. Curabitur non hendrerit nibh. Nulla venenatis odio vel urna fermentum gravida. Mauris hendrerit, nisi eu efficitur pulvinar, arcu metus elementum eros, a dignissim arcu metus at elit. Suspendisse dui nisi, fermentum ultricies ligula quis, ornare feugiat magna. Phasellus ut sagittis nunc, non porttitor odio. Donec sit amet ex id erat mollis rhoncus. Pellentesque sit amet consectetur purus. Morbi malesuada, nisl eu lobortis congue, lorem nisl tempus neque, vitae euismod enim nisl vitae dui. Maecenas euismod tincidunt varius. Vivamus viverra enim quam, vel aliquet purus pharetra at. Ut efficitur sem vitae consequat vestibulum. Nulla sit amet justo sed nibh egestas pretium. In ac orci cursus, vestibulum ante ac, accumsan sapien.</p>\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "005757ee-7bf4-4111-a35a-8b886403244a",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "stats",
+      "responses": [
+        {
+          "uuid": "4c55f60e-91b9-4eeb-a491-5e5f8282af41",
+          "body": "{\n  \"totalPublishedDocument\": {{faker 'random.numeric' 4}},\n  \"totalTodoDocument\": {{faker 'random.numeric' 2}},\n  \"userCount\": {{faker 'random.numeric' 3}}\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -75,6 +133,14 @@
     {
       "type": "route",
       "uuid": "84fdac45-d651-4bc4-ae55-30336dd7bc88"
+    },
+    {
+      "type": "route",
+      "uuid": "f3846321-6dae-4763-b45c-ff6ac8ecb350"
+    },
+    {
+      "type": "route",
+      "uuid": "005757ee-7bf4-4111-a35a-8b886403244a"
     }
   ],
   "proxyMode": false,

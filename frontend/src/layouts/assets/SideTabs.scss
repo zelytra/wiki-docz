@@ -1,0 +1,16 @@
+.side-tabs {
+  width: 20%;
+  max-width: 250px;
+  background: #eef2f5;
+  //height: 100%;
+  padding: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &.deployed {
+    max-width: 0;
+    padding: 0;
+  }
+}

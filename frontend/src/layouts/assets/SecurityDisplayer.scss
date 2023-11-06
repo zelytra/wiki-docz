@@ -1,9 +1,9 @@
 .security-wrapper{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
+
   span.security{
     padding: 4px;
+    font-weight: 700;
+    border-radius: 2px;
   }
 
 }

@@ -1,9 +1,8 @@
-// Define your routes in an array
 import { Home } from '@/pages/Home'
 import { PageNotFound } from '@/pages/PageNotFound'
 import type React from 'react'
 import { PublishedDocuments } from '@/pages/PublishedDocuments'
-import { Test } from '@/pages/Test'
+import { DocumentViewer } from '@/features/document/DocumentViewer'
 
 export interface RouteDefinition {
   path: string
@@ -24,10 +23,10 @@ const routes: RouteDefinition[] = [
     isProtected: false,
     name: 'Published'
   }, {
-    path: '/test',
-    component: Test,
+    path: '/doc/:docId',
+    component: DocumentViewer,
     isProtected: false,
-    name: 'Test'
+    name: 'Doc'
   }, {
     path: '/*',
     component: PageNotFound,

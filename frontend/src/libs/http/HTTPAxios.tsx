@@ -1,4 +1,4 @@
-import { useState, useEffect, type ReactNode } from 'react'
+import { useState, useEffect } from 'react'
 import axios, { type AxiosResponse, type AxiosError, type Method, type AxiosProgressEvent } from 'axios'
 import { useAuth } from 'react-oidc-context'
 
@@ -15,11 +15,6 @@ export interface AxiosState {
   error: AxiosError | null
   loading: boolean
   progress?: number
-}
-
-export interface HTTPRenderProps {
-  state: AxiosState
-  children: (data: any) => (ReactNode[] | ReactNode)
 }
 
 const backendURL = import.meta.env.VITE_BACKEND_HOST + '/'

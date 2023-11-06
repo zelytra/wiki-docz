@@ -1,0 +1,17 @@
+.editor-wrapper {
+  border: 1px solid #d1d1d1;
+  width: auto;
+  height: 100%;
+  //background: red;
+  //overflow: hidden;
+
+  .tiptap {
+    max-height: calc(100vh - 223px);
+    margin: 2px;
+    overflow: hidden auto;
+
+    .focused {
+      border: none !important;
+    }
+  }
+}

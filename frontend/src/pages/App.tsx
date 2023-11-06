@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { matchPath, Route, Routes, useLocation } from 'react-router-dom'
 import router from '@/libs/router'
 import React, { type ReactElement, useEffect } from 'react'
 import { useAuth } from 'react-oidc-context'
@@ -10,8 +10,9 @@ export default function App (): ReactElement {
   const auth = useAuth()
 
   useEffect(() => {
-    const route = router.filter((x) => x.path === location.pathname)[0]
-    if (route.isProtected && !auth.isAuthenticated && !auth.isLoading) {
+    const matchedRoute = router.find(route => matchPath(location.pathname, route.path))
+
+    if (matchedRoute?.isProtected && !auth.isAuthenticated && !auth.isLoading) {
       void auth.signinRedirect()
       auth.startSilentRenew()
     }
@@ -22,7 +23,7 @@ export default function App (): ReactElement {
             <HeaderBar/>
             <Routes>
                 {router.map((value) => (
-                    <Route path={value.path} Component={value.component} key={value.path}/>
+                    <Route path={value.path} element={React.createElement(value.component)} key={value.path}/>
                 ))}
             </Routes>
         </div>
