@@ -6,6 +6,7 @@ import '@/assets/style.scss'
 import '@/assets/font.scss'
 import '@/assets/color.scss'
 import { AuthProvider, type AuthProviderProps } from 'react-oidc-context'
+import { NotificationProvider } from '@/libs/notification/NotificationProvider'
 
 const oidcConfig: AuthProviderProps = {
   client_id: 'application',
@@ -18,7 +19,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
         <AuthProvider {...oidcConfig}>
             <BrowserRouter>
-                <App/>
+                <NotificationProvider>
+                    <App/>
+                </NotificationProvider>
             </BrowserRouter>
         </AuthProvider>
     </React.StrictMode>

@@ -1,5 +1,5 @@
-import React, { createContext, type ReactElement } from 'react'
-import { type Notification, NotificationHandler } from '@/libs/notification/NotificationHandler'
+import React, { type ReactElement } from 'react'
+import { type Notification } from '@/libs/notification/NotificationHandler'
 
 export function NotificationRenderer (props: Notification): ReactElement {
   return (

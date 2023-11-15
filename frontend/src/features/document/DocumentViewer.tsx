@@ -1,4 +1,4 @@
-import React, { type ReactElement, useContext, useState } from 'react'
+import React, { type ReactElement, useState } from 'react'
 import { SecurityDisplay, SecurityType } from '@/layouts/SecurityDisplay'
 import './assets/DocumentViewer.scss'
 import { Button } from '@/libs/forms/Button'
@@ -11,9 +11,9 @@ import { Tiptap } from '@/libs/editor/Tiptap'
 import useAxios from '@/libs/http/HTTPAxios'
 import { HTTPRenderWrapper } from '@/libs/http/HTTPRenderWrapper'
 import { type WikiDocument } from '@/objects/Document'
-import { NotificationContext, NotificationHandler } from '@/libs/notification/NotificationHandler'
 import { ReactSVG } from 'react-svg'
 import icon from '@/assets/icons/home.svg'
+import { useNotifications } from '@/libs/notification/NotificationProvider'
 
 export function DocumentViewer (): ReactElement {
   const [isModalOpen, setModalOpen] = useState(false)
@@ -25,7 +25,7 @@ export function DocumentViewer (): ReactElement {
     isProtected: false
   })
 
-  const notification = useContext(NotificationContext)
+  const notification = useNotifications()
 
   return (
         <HTTPRenderWrapper state={wikiDocument}>
