@@ -1,21 +1,11 @@
-import React, { type ReactElement } from 'react'
+import React, { createContext, type ReactElement } from 'react'
+import { type Notification, NotificationHandler } from '@/libs/notification/NotificationHandler'
 
-export interface NotificationStyle {
-  background: string
-  textColor: string
-}
-
-export interface NotificationRendererProps {
-  content: string
-  style: NotificationStyle
-  icon: ReactElement
-}
-
-export function NotificationRenderer (props: NotificationRendererProps): ReactElement {
+export function NotificationRenderer (props: Notification): ReactElement {
   return (
-    <span style={{ color: props.style.textColor, backgroundColor: props.style.background }}>
-      {props.icon}
-      <p>{props.content}</p>
+        <span style={{ color: props.style.textColor, backgroundColor: props.style.background }}>
+            <div>{props.icon}</div>
+            <p>{props.content}</p>
     </span>
   )
 }

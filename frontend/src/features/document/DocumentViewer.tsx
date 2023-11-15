@@ -1,4 +1,4 @@
-import React, { type ReactElement, useState } from 'react'
+import React, { type ReactElement, useContext, useState } from 'react'
 import { SecurityDisplay, SecurityType } from '@/layouts/SecurityDisplay'
 import './assets/DocumentViewer.scss'
 import { Button } from '@/libs/forms/Button'
@@ -11,6 +11,9 @@ import { Tiptap } from '@/libs/editor/Tiptap'
 import useAxios from '@/libs/http/HTTPAxios'
 import { HTTPRenderWrapper } from '@/libs/http/HTTPRenderWrapper'
 import { type WikiDocument } from '@/objects/Document'
+import { NotificationContext, NotificationHandler } from '@/libs/notification/NotificationHandler'
+import { ReactSVG } from 'react-svg'
+import icon from '@/assets/icons/home.svg'
 
 export function DocumentViewer (): ReactElement {
   const [isModalOpen, setModalOpen] = useState(false)
@@ -21,6 +24,8 @@ export function DocumentViewer (): ReactElement {
     url: 'doc/' + docId,
     isProtected: false
   })
+
+  const notification = useContext(NotificationContext)
 
   return (
         <HTTPRenderWrapper state={wikiDocument}>
@@ -42,7 +47,17 @@ export function DocumentViewer (): ReactElement {
                             <div className={'action-bar'}>
                                 <h1>{doc.metadata.title}</h1>
                                 <div className={'action-buttons'}>
-                                    <Button revert={true} name={'Edite'}/>
+                                    <Button revert={true} name={'Edite'} onClick={() => {
+                                      notification.sendNotification({
+                                        content: 'oskour',
+                                        style: {
+                                          background: 'red',
+                                          textColor: 'green'
+                                        },
+                                        icon: <ReactSVG src={icon}/>
+                                      })
+                                    }
+                                    }/>
                                     <Button revert={true} name={'Submit'}/>
                                     <Button revert={true} name={'Details'} onClick={() => {
                                       setModalOpen(true)
