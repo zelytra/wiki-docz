@@ -7,6 +7,7 @@ import routes from '@/libs/router'
 import useAxios from '@/libs/http/HTTPAxios'
 import { HTTPRenderWrapper } from '@/libs/http/HTTPRenderWrapper'
 import { type User } from '@/objects/User'
+import { Notifications } from '@/libs/notification/Notifications'
 
 export function HeaderBar (): ReactElement {
   const userInfo = useAxios({
@@ -28,11 +29,14 @@ export function HeaderBar (): ReactElement {
                     ))}
                 </nav>
             </div>
-            <HTTPRenderWrapper state={userInfo}>
-                {(data: User) => (
-                    <img className={'user-icon'} src={data.avatar} alt={'user-icon'}/>
-                )}
-            </HTTPRenderWrapper>
+            <div className={'side-content'}>
+                <Notifications/>
+                <HTTPRenderWrapper state={userInfo}>
+                    {(data: User) => (
+                        <img className={'user-icon'} src={data.avatar} alt={'user-icon'}/>
+                    )}
+                </HTTPRenderWrapper>
+            </div>
         </header>
   )
 }

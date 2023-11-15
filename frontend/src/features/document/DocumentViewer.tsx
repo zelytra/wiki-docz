@@ -1,4 +1,4 @@
-import React, { type ReactElement, useState } from 'react'
+import React, { type ReactElement, useEffect, useState } from 'react'
 import { SecurityDisplay, SecurityType } from '@/layouts/SecurityDisplay'
 import './assets/DocumentViewer.scss'
 import { Button } from '@/libs/forms/Button'
@@ -11,6 +11,10 @@ import { Tiptap } from '@/libs/editor/Tiptap'
 import useAxios from '@/libs/http/HTTPAxios'
 import { HTTPRenderWrapper } from '@/libs/http/HTTPRenderWrapper'
 import { type WikiDocument } from '@/objects/Document'
+import { ReactSVG } from 'react-svg'
+import icon from '@/assets/icons/home.svg'
+import { useNotifications } from '@/libs/notification/NotificationProvider'
+import { NotificationTemplate } from '@/libs/notification/NotificationHandler'
 
 export function DocumentViewer (): ReactElement {
   const [isModalOpen, setModalOpen] = useState(false)
@@ -22,6 +26,32 @@ export function DocumentViewer (): ReactElement {
     isProtected: false
   })
 
+  const notification = useNotifications()
+
+  useEffect(() => {
+    setInterval(() => {
+      notification.sendNotification({
+        content: 'oskour',
+        style: NotificationTemplate.INFO,
+        icon: <ReactSVG src={icon}/>
+      })
+      notification.sendNotification({
+        content: 'oskour',
+        style: NotificationTemplate.WARNING,
+        icon: <ReactSVG src={icon}/>
+      })
+      notification.sendNotification({
+        content: 'oskour',
+        style: NotificationTemplate.ERROR,
+        icon: <ReactSVG src={icon}/>
+      })
+      notification.sendNotification({
+        content: 'oskour',
+        style: NotificationTemplate.SUCCESS,
+        icon: <ReactSVG src={icon}/>
+      })
+    }, 6000)
+  }, [])
   return (
         <HTTPRenderWrapper state={wikiDocument}>
             {(doc: WikiDocument) => (
@@ -42,7 +72,14 @@ export function DocumentViewer (): ReactElement {
                             <div className={'action-bar'}>
                                 <h1>{doc.metadata.title}</h1>
                                 <div className={'action-buttons'}>
-                                    <Button revert={true} name={'Edite'}/>
+                                    <Button revert={true} name={'Edite'} onClick={() => {
+                                      notification.sendNotification({
+                                        content: 'oskour',
+                                        style: NotificationTemplate.INFO,
+                                        icon: <ReactSVG src={icon}/>
+                                      })
+                                    }
+                                    }/>
                                     <Button revert={true} name={'Submit'}/>
                                     <Button revert={true} name={'Details'} onClick={() => {
                                       setModalOpen(true)
