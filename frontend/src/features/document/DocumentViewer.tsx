@@ -1,4 +1,4 @@
-import React, { type ReactElement, useState } from 'react'
+import React, { type ReactElement, useEffect, useState } from 'react'
 import { SecurityDisplay, SecurityType } from '@/layouts/SecurityDisplay'
 import './assets/DocumentViewer.scss'
 import { Button } from '@/libs/forms/Button'
@@ -14,6 +14,7 @@ import { type WikiDocument } from '@/objects/Document'
 import { ReactSVG } from 'react-svg'
 import icon from '@/assets/icons/home.svg'
 import { useNotifications } from '@/libs/notification/NotificationProvider'
+import { NotificationTemplate } from '@/libs/notification/NotificationHandler'
 
 export function DocumentViewer (): ReactElement {
   const [isModalOpen, setModalOpen] = useState(false)
@@ -27,6 +28,30 @@ export function DocumentViewer (): ReactElement {
 
   const notification = useNotifications()
 
+  useEffect(() => {
+    setInterval(() => {
+      notification.sendNotification({
+        content: 'oskour',
+        style: NotificationTemplate.INFO,
+        icon: <ReactSVG src={icon}/>
+      })
+      notification.sendNotification({
+        content: 'oskour',
+        style: NotificationTemplate.WARNING,
+        icon: <ReactSVG src={icon}/>
+      })
+      notification.sendNotification({
+        content: 'oskour',
+        style: NotificationTemplate.ERROR,
+        icon: <ReactSVG src={icon}/>
+      })
+      notification.sendNotification({
+        content: 'oskour',
+        style: NotificationTemplate.SUCCESS,
+        icon: <ReactSVG src={icon}/>
+      })
+    }, 6000)
+  }, [])
   return (
         <HTTPRenderWrapper state={wikiDocument}>
             {(doc: WikiDocument) => (
@@ -50,10 +75,7 @@ export function DocumentViewer (): ReactElement {
                                     <Button revert={true} name={'Edite'} onClick={() => {
                                       notification.sendNotification({
                                         content: 'oskour',
-                                        style: {
-                                          background: 'red',
-                                          textColor: 'green'
-                                        },
+                                        style: NotificationTemplate.INFO,
                                         icon: <ReactSVG src={icon}/>
                                       })
                                     }

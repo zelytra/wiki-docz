@@ -29,12 +29,14 @@ export function HeaderBar (): ReactElement {
                     ))}
                 </nav>
             </div>
-            <Notifications/>
-            <HTTPRenderWrapper state={userInfo}>
-                {(data: User) => (
-                    <img className={'user-icon'} src={data.avatar} alt={'user-icon'}/>
-                )}
-            </HTTPRenderWrapper>
+            <div className={'side-content'}>
+                <Notifications/>
+                <HTTPRenderWrapper state={userInfo}>
+                    {(data: User) => (
+                        <img className={'user-icon'} src={data.avatar} alt={'user-icon'}/>
+                    )}
+                </HTTPRenderWrapper>
+            </div>
         </header>
   )
 }
